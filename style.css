@@ -1,0 +1,180 @@
+body{
+    margin: 0;
+    background: #F9F9F9;
+}
+header{
+    background: #323F51;
+    box-shadow: 2px 3px 5px rgba(50, 50, 50, 0.55);
+}
+.logo{
+    margin: 0;
+    display: inline-block;
+    padding: 15px;
+}
+.logo img{
+    height: 49px;
+}
+#BarraDeBusca i{
+    color: #AFC233;
+}
+#BarraDeBusca {
+    background: #FFFFFF;
+    display: inline-block;
+    border-radius: 21px;
+    height: 35px;
+    width: 600px;
+    position: absolute;
+    top: 20px;
+    left: 460px;
+    font-size: 23px;
+}
+#BarraDeBusca input{
+    border: none;
+    font-size: 23px;
+    position: absolute;
+    top: 4px;
+    width: 540px;
+    right: 15px;
+}
+#BarraDeBusca label{
+    position: absolute;
+    top: 4px;
+    right: 567px;
+}
+#navLateral{
+    width: 225px;
+    height: 818px;
+    margin-top: 2px;
+    display: inline-block;
+    background: #FFFFFF;
+    box-shadow: 2px 1px 5px rgba(50, 50, 50, 0.55);
+}
+#ListaPessoa{
+    width: 1300px;
+    position: absolute;
+    right: 0px;
+    display: inline-block;
+}
+#ImagemUser{
+    display: inline-block;
+    background: #FFFFFF;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    border-radius: 40px;
+    width: 45px;
+    height: 45px;
+    margin: 10px;
+}
+.fa-user{
+    position: relative;
+    top: 10px;
+    font-size: 30px;
+    right: -9px;
+}
+.PsecaoCandidato{
+    background: #FFFFFF;
+    width: 1070px;
+    position: relative;
+    left: 47px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    box-shadow: 2px 1px 5px rgba(50, 50, 50, 0.55);
+}
+.PsecaoCandidato ul{
+    margin-top: 60px;
+    margin-bottom: 3px;
+}
+.secaoCandidato{
+    background: #FFFFFF;
+    width: 1070px;
+    position: relative;
+    left: 47px;
+    box-shadow: 2px 1px 5px rgba(50, 50, 50, 0.55);
+}
+.secaoCandidato ul{
+    margin-top: 1px;
+    margin-bottom: 3px;
+}
+.FotoCandidato{
+    display: inline-block;
+}
+.FotoCandidato img{
+    border-radius: 40px;
+    height: 49px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-right: 0px;
+    padding-right: 10px;
+    padding-left: 10px;
+    position: relative;
+    left: -30px;
+}
+.NomeCandidato{
+    display: inline-block;
+    position: absolute;
+    top: 27px;
+    left: 102px;
+}
+.EmailCandidato{
+    display: inline-block;
+    position: absolute;
+    top: 27px;
+    left: 240px;
+}
+.TelCandidato{
+    display: inline-block;
+    position: absolute;
+    top: 27px;
+    left: 560px;
+}
+.CidadeCandidato{
+    display: inline-block;
+    position: absolute;
+    top: 27px;
+    left: 720px;
+}
+.BotoesCandidato{
+    display: inline-block;
+    position: absolute;
+    top: 27px;
+    left: 969px;
+}
+.BotoesCandidato2{
+    display: inline-block;
+    position: absolute;
+    top: 27px;
+    left: 999px;
+}
+.BotoesCandidato3{
+    display: inline-block;
+    position: absolute;
+    top: 27px;
+    left: 1029px;
+}
+.BotaoLateral{
+    list-style: none;
+}
+.BotaoLateralDesativado{
+    padding-bottom: 25px;
+    padding-top: 22px;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.473);
+}
+.BotaoLateralDesativado a{
+    text-decoration: none;
+    padding-left: 15px;
+    color: rgba(0, 0, 0, 0.473);
+}
+#paginaAtual{
+    padding-bottom: 25px;
+    padding-top: 22px;
+    font-size: 24px;
+    color: #AFC233;
+}
+#paginaAtual a{
+    text-decoration: none;
+    padding-left: 15px;
+    color: #AFC233;
+    
+}

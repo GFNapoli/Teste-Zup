@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a7ee1f1243.js"></script>
+    <title>Teste Zup</title>
+</head>
+<body>
+    <header>
+        <aside>
+            <figure class="logo">
+                <a href="index.html"><img src="assets/logo-zup-branco.png" alt="Logo Zup"></a>
+            </figure>
+            <form id="BarraDeBusca">
+                <label for="search"><i class="fas fa-search"></i></label>
+                <input type="text" id="search" placeholder="Buscar" value="" autocomplete="off">
+            </form>
+            <figure id="ImagemUser">
+                <i class="fas fa-user"></i>
+            </figure>
+        </aside>
+    </header>
+    <main>
+        <aside id="navLateral">
+            <nav>
+                <ul class="BotaoLateral">
+                    <li class="BotaoLateralDesativado">
+                        <label for="home"><i class="fas fa-border-none"></i></label>
+                        <a id="home" href="index.html">Todos</a>
+                    </li>
+                    <li id="paginaAtual">
+                        <label for="atendidos"><i class="fas fa-check"></i></label>
+                        <a id="atendidos" href="atendidos.html">Atendidos</a>
+                    </li>
+                    <li class="BotaoLateralDesativado">
+                        <label for="lixeira"><i class="fas fa-trash"></i></label>
+                        <a id="lixeira" href="lixeira.html">Lixeira</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <section id="ListaAtendidos"></section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
