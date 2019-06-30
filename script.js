@@ -2,6 +2,9 @@ var appConstants={
     pessoaLista: 'ListaPessoa'
 }
 var dataResponse = [];
+function teste1(){
+    alert("click");
+}
 function filterNome(nome) {
     var inputSearchElement = document.getElementById("search");
     var inputSearchValue = inputSearchElement.value;
@@ -125,9 +128,9 @@ function RenderCandidatos (listatributos) {
             "<li class=\"EmailCandidato\">"+listatributos.email+" </li>"+
             "<li class=\"TelCandidato\">"+listatributos.cell+" </li>"+
             "<li class=\"CidadeCandidato\">"+cidade+"</li>"+
-            "<li class=\"BotoesCandidato\"><i class=\"fas fa-trash\"></i> </li>"+
-            "<li class=\"BotoesCandidato2\"><i class=\"fas fa-border-none\"></i> </li>"+
-            "<li class=\"BotoesCandidato3\"><i class=\"fas fa-check\"></i> </li>";
+            "<li class=\"BotoesCandidato\"><i class=\"fas fa-trash\" onclick = \"teste1()\"></i> </li>"+
+            "<li class=\"BotoesCandidato2\"><i class=\"fas fa-border-none\" onclick = \"teste1()\"></i> </li>"+
+            "<li class=\"BotoesCandidato3\"><i class=\"fas fa-check\" onclick = \"teste1()\"></i> </li>";
     return pessoa;
 }
 function renderList (listSection) {

@@ -176,5 +176,13 @@ header{
     text-decoration: none;
     padding-left: 15px;
     color: #AFC233;
-    
+}
+.BotoesCandidato{
+    cursor: pointer;
+}
+.BotoesCandidato2{
+    cursor: pointer;
+}
+.BotoesCandidato3{
+    cursor: pointer;
 }
