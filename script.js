@@ -12,7 +12,6 @@ function filterNome(nome) {
 }
 function onFilterLPessoas() {
     var dataResponseFilter = JSON.parse(JSON.stringify(dataResponse.results));
-    console.log(dataResponseFilter);
     dataResponseFilter = dataResponseFilter.filter(filterNome);
     renderList(dataResponseFilter);
 }
@@ -118,6 +117,12 @@ function ajeitacidade(cidade,estado){
     }
     return cidadeNome;
 }
+function perfilUser(usuario){
+    var perfil = document.getElementById("ImagemUser");
+    perfil.innerText='';
+    perfil.insertAdjacentHTML("beforeend",
+    "<img id=\"imagemPerfil\" src=\""+usuario[0].picture.medium+"\"alt=\"Foto Usuario\">");
+}
 function RenderCandidatos (listatributos) {
     var pessoa = '';
     var nome = ajeitaNome(listatributos.name.first)
@@ -170,10 +175,11 @@ function doRequest() {
             dataResponse = response;
             console.log(dataResponse.results);
             renderList(dataResponse.results);
+            perfilUser(dataResponse.results);
             setOnFilterPessoas();
         }
     };
-    xhttp.open("GET", "https://randomuser.me/api/?page=3&results=10&seed=abc&nat=br");
+    xhttp.open("GET", "https://randomuser.me/api/?page=3&results=10&nat=br");
     xhttp.send();
 }
 doRequest();

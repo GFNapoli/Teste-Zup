@@ -66,6 +66,10 @@ header{
     height: 45px;
     margin: 10px;
 }
+#imagemPerfil{
+    border-radius: 45px;
+    height: 45px;
+}
 .fa-user{
     position: relative;
     top: 10px;
@@ -139,18 +143,30 @@ header{
     position: absolute;
     top: 27px;
     left: 969px;
+    cursor: pointer;
 }
 .BotoesCandidato2{
     display: inline-block;
     position: absolute;
     top: 27px;
     left: 999px;
+    cursor: pointer;
 }
 .BotoesCandidato3{
     display: inline-block;
     position: absolute;
     top: 27px;
     left: 1029px;
+    cursor: pointer;
+}
+.BotoesCandidato:active{
+    color: #AFC233;
+}
+.BotoesCandidato2:active{
+    color: #AFC233;
+}
+.BotoesCandidato3:active{
+    color: #AFC233;
 }
 .BotaoLateral{
     list-style: none;
@@ -176,13 +192,4 @@ header{
     text-decoration: none;
     padding-left: 15px;
     color: #AFC233;
-}
-.BotoesCandidato{
-    cursor: pointer;
-}
-.BotoesCandidato2{
-    cursor: pointer;
-}
-.BotoesCandidato3{
-    cursor: pointer;
 }
