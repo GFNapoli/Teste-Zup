@@ -1,9 +1,30 @@
+var dataResponse = [];
+var lixo = [];
+var visto = [];
 var appConstants={
     pessoaLista: 'ListaPessoa'
 }
-var dataResponse = [];
-function teste1(){
-    alert("click");
+function MandaLixo(n){
+    lixo = JSON.parse(window.localStorage.getItem("lixeira"));
+    lixo.results.push(dataResponse.results[n]);
+    window.localStorage.removeItem("lixeira");
+    window.localStorage.setItem("lixeira", JSON.stringify(lixo));
+    window.localStorage.removeItem("vizualizar");
+    dataResponse.results.splice(n,1);
+    window.localStorage.setItem("vizualizar",JSON.stringify(dataResponse));
+    renderList(dataResponse.results);
+}
+function MarcaVisto(n){
+    visto = JSON.parse(window.localStorage.getItem("visto"));
+    var j = visto.results.length;
+    for(var i = 0; i<j; i++){
+        if(dataResponse.results[n].email===visto.results[i].email){
+            return false;
+        }
+    }
+    visto.results.push(dataResponse.results[n]);
+    window.localStorage.removeItem("visto");
+    window.localStorage.setItem("visto", JSON.stringify(visto));
 }
 function filterNome(nome) {
     var inputSearchElement = document.getElementById("search");
@@ -11,7 +32,7 @@ function filterNome(nome) {
     return nome.name.first.toUpperCase().includes(inputSearchValue.toUpperCase())
 }
 function onFilterLPessoas() {
-    var dataResponseFilter = JSON.parse(JSON.stringify(dataResponse.results));
+    var dataResponseFilter = dataResponse.results;
     dataResponseFilter = dataResponseFilter.filter(filterNome);
     renderList(dataResponseFilter);
 }
@@ -123,7 +144,7 @@ function perfilUser(usuario){
     perfil.insertAdjacentHTML("beforeend",
     "<img id=\"imagemPerfil\" src=\""+usuario[0].picture.medium+"\"alt=\"Foto Usuario\">");
 }
-function RenderCandidatos (listatributos) {
+function RenderCandidatos (listatributos,i) {
     var pessoa = '';
     var nome = ajeitaNome(listatributos.name.first)
     var cidade = ajeitacidade(listatributos.location.city, listatributos.location.state);
@@ -133,9 +154,9 @@ function RenderCandidatos (listatributos) {
             "<li class=\"EmailCandidato\">"+listatributos.email+" </li>"+
             "<li class=\"TelCandidato\">"+listatributos.cell+" </li>"+
             "<li class=\"CidadeCandidato\">"+cidade+"</li>"+
-            "<li class=\"BotoesCandidato\"><i class=\"fas fa-trash\" onclick = \"teste1()\"></i> </li>"+
+            "<li class=\"BotoesCandidato\"><i class=\"fas fa-trash\" onclick = \"MandaLixo("+i+")\"></i> </li>"+
             "<li class=\"BotoesCandidato2\"><i class=\"fas fa-border-none\" onclick = \"teste1()\"></i> </li>"+
-            "<li class=\"BotoesCandidato3\"><i class=\"fas fa-check\" onclick = \"teste1()\"></i> </li>";
+            "<li class=\"BotoesCandidato3\"><i class=\"fas fa-check\" onclick = \"MarcaVisto("+i+")\"></i> </li>";
     return pessoa;
 }
 function renderList (listSection) {
@@ -146,14 +167,14 @@ function renderList (listSection) {
             if(i===0){
                 listaPessoas.insertAdjacentHTML("beforeend",
                 "<section class=\"PsecaoCandidato\">" +
-                "<ul>"+RenderCandidatos(listSection[i])+"</ul>" +
+                "<ul>"+RenderCandidatos(listSection[i],i)+"</ul>" +
                 "</section>"
             );
             }
             else{
                 listaPessoas.insertAdjacentHTML("beforeend",
                 "<section class=\"secaoCandidato\">" +
-                "<ul>"+RenderCandidatos(listSection[i])+"</ul>" +
+                "<ul>"+RenderCandidatos(listSection[i],i)+"</ul>" +
                 "</section>"
                 );
             }
@@ -173,7 +194,11 @@ function doRequest() {
         if (this.readyState === 4 && this.status === 200) {
             var response = processRequest(this.responseText);
             dataResponse = response;
-            console.log(dataResponse.results);
+            window.localStorage.setItem("vizualizar",JSON.stringify(dataResponse));
+            window.localStorage.setItem("userMain",JSON.stringify(dataResponse));
+            response.results.splice(0,response.results.length);
+            window.localStorage.setItem("lixeira",JSON.stringify(response));
+            window.localStorage.setItem("visto",JSON.stringify(response));
             renderList(dataResponse.results);
             perfilUser(dataResponse.results);
             setOnFilterPessoas();
@@ -182,4 +207,18 @@ function doRequest() {
     xhttp.open("GET", "https://randomuser.me/api/?page=3&results=10&nat=br");
     xhttp.send();
 }
-doRequest();
+function checadados(){
+    if(window.localStorage.length===0){
+        doRequest();
+    }
+    else{
+        dataResponse = JSON.parse(window.localStorage.getItem("vizualizar"));
+        var user = JSON.parse(window.localStorage.getItem("userMain"));
+        var truco = JSON.parse(window.localStorage.getItem("visto"));
+        console.log(truco);
+        renderList(dataResponse.results);
+        perfilUser(user.results);
+        setOnFilterPessoas();
+    }
+}
+checadados();
