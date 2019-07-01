@@ -195,11 +195,11 @@ function doRequest() {
             dataResponse = response;
             window.localStorage.setItem("vizualizar",JSON.stringify(dataResponse));
             window.localStorage.setItem("userMain",JSON.stringify(dataResponse));
+            renderList(dataResponse.results);
+            perfilUser(dataResponse.results);
             response.results.splice(0,response.results.length);
             window.localStorage.setItem("lixeira",JSON.stringify(response));
             window.localStorage.setItem("visto",JSON.stringify(response));
-            renderList(dataResponse.results);
-            perfilUser(dataResponse.results);
             setOnFilterPessoas();
         }
     };
