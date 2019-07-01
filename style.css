@@ -52,7 +52,8 @@ header{
 #ListaPessoa{
     width: 1300px;
     position: absolute;
-    right: 0px;
+    left: 18%;
+    top: 12%;
     display: inline-block;
 }
 #ImagemUser{
