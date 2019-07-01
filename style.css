@@ -120,28 +120,28 @@ header{
     position: absolute;
     top: 27px;
     left: 102px;
-    cursor: default;
+    cursor: pointer;
 }
 .EmailCandidato{
     display: inline-block;
     position: absolute;
     top: 27px;
     left: 240px;
-    cursor: default;
+    cursor: pointer;
 }
 .TelCandidato{
     display: inline-block;
     position: absolute;
     top: 27px;
     left: 560px;
-    cursor: default;
+    cursor: pointer;
 }
 .CidadeCandidato{
     display: inline-block;
     position: absolute;
     top: 27px;
     left: 720px;
-    cursor: default;
+    cursor: pointer;
 }
 .BotoesCandidato{
     display: inline-block;
