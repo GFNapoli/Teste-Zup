@@ -10,7 +10,7 @@ function MandaLixo(n){
     for(var i = 0; i<j; i++){
         if(dataResponse.results[n].email===todos.results[i].email){
             lixo = JSON.parse(window.localStorage.getItem("lixeira"));
-            lixo.results.push(dataResponse[n]);
+            lixo.results.push(dataResponse.results[n]);
             window.localStorage.removeItem("lixeira");
             window.localStorage.setItem("lixeira", JSON.stringify(lixo));
             todos.results.splice(i,1);
@@ -25,7 +25,7 @@ function MandaTodos(n){
     for(var i = 0; i<j; i++){
         if(dataResponse.results[n].email===lixo.results[i].email){
             todos = JSON.parse(window.localStorage.getItem("vizualizar"));
-            todos.results.push(dataResponse[n]);
+            todos.results.push(dataResponse.results[n]);
             window.localStorage.removeItem("vizualizar");
             window.localStorage.setItem("vizualizar", JSON.stringify(todos));
             lixo.results.splice(i,1);
@@ -163,7 +163,7 @@ function RenderCandidatos (listatributos,i) {
             "<li class=\"TelCandidato\">"+listatributos.cell+" </li>"+
             "<li class=\"CidadeCandidato\">"+cidade+"</li>"+
             "<li class=\"BotoesCandidato\"><i class=\"fas fa-trash\" onclick = \"MandaLixo("+i+")\"></i> </li>"+
-            "<li class=\"BotoesCandidato2\"><i class=\"fas fa-border-none\" onclick = \"MarcaTodos("+i+")\"></i> </li>";
+            "<li class=\"BotoesCandidato2\"><i class=\"fas fa-border-none\" onclick = \"MandaTodos("+i+")\"></i> </li>";
     return pessoa;
 }
 function renderList (listSection) {

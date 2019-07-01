@@ -213,8 +213,6 @@ function checadados(){
     else{
         dataResponse = JSON.parse(window.localStorage.getItem("vizualizar"));
         var user = JSON.parse(window.localStorage.getItem("userMain"));
-        var truco = JSON.parse(window.localStorage.getItem("visto"));
-        console.log(truco);
         renderList(dataResponse.results);
         perfilUser(user.results);
         setOnFilterPessoas();
