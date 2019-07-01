@@ -1,30 +1,38 @@
 var dataResponse = [];
 var lixo = [];
-var visto = [];
+var todos = [];
 var appConstants={
     pessoaLista: 'ListaPessoa'
 }
 function MandaLixo(n){
-    lixo = JSON.parse(window.localStorage.getItem("lixeira"));
-    lixo.results.push(dataResponse.results[n]);
-    window.localStorage.removeItem("lixeira");
-    window.localStorage.setItem("lixeira", JSON.stringify(lixo));
-    window.localStorage.removeItem("vizualizar");
-    dataResponse.results.splice(n,1);
-    window.localStorage.setItem("vizualizar",JSON.stringify(dataResponse));
-    renderList(dataResponse.results);
-}
-function MarcaVisto(n){
-    visto = JSON.parse(window.localStorage.getItem("visto"));
-    var j = visto.results.length;
+    todos = JSON.parse(window.localStorage.getItem("vizualizar"));
+    var j = todos.results.length;
     for(var i = 0; i<j; i++){
-        if(dataResponse.results[n].email===visto.results[i].email){
-            return false;
+        if(dataResponse.results[n].email===todos.results[i].email){
+            lixo = JSON.parse(window.localStorage.getItem("lixeira"));
+            lixo.results.push(dataResponse[n]);
+            window.localStorage.removeItem("lixeira");
+            window.localStorage.setItem("lixeira", JSON.stringify(lixo));
+            todos.results.splice(i,1);
+            window.localStorage.removeItem("vizualizar");
+            window.localStorage.setItem("vizualizar", JSON.stringify(todos));
         }
     }
-    visto.results.push(dataResponse.results[n]);
-    window.localStorage.removeItem("visto");
-    window.localStorage.setItem("visto", JSON.stringify(visto));
+}
+function MandaTodos(n){
+    lixo = JSON.parse(window.localStorage.getItem("lixeira"));
+    var j = lixo.results.length;
+    for(var i = 0; i<j; i++){
+        if(dataResponse.results[n].email===lixo.results[i].email){
+            todos = JSON.parse(window.localStorage.getItem("vizualizar"));
+            todos.results.push(dataResponse[n]);
+            window.localStorage.removeItem("vizualizar");
+            window.localStorage.setItem("vizualizar", JSON.stringify(todos));
+            lixo.results.splice(i,1);
+            window.localStorage.removeItem("lixeira");
+            window.localStorage.setItem("lixeira", JSON.stringify(lixo));
+        }
+    }
 }
 function filterNome(nome) {
     var inputSearchElement = document.getElementById("search");
@@ -155,7 +163,7 @@ function RenderCandidatos (listatributos,i) {
             "<li class=\"TelCandidato\">"+listatributos.cell+" </li>"+
             "<li class=\"CidadeCandidato\">"+cidade+"</li>"+
             "<li class=\"BotoesCandidato\"><i class=\"fas fa-trash\" onclick = \"MandaLixo("+i+")\"></i> </li>"+
-            "<li class=\"BotoesCandidato3\"><i class=\"fas fa-check\" onclick = \"MarcaVisto("+i+")\"></i> </li>";
+            "<li class=\"BotoesCandidato2\"><i class=\"fas fa-border-none\" onclick = \"MarcaTodos("+i+")\"></i> </li>";
     return pessoa;
 }
 function renderList (listSection) {
@@ -180,41 +188,13 @@ function renderList (listSection) {
         }
     }
 }
-function processRequest(response) {
-    try {
-        return JSON.parse(response);
-    } catch (e) {
-        return null
-    }
-}
-function doRequest() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState === 4 && this.status === 200) {
-            var response = processRequest(this.responseText);
-            dataResponse = response;
-            window.localStorage.setItem("vizualizar",JSON.stringify(dataResponse));
-            window.localStorage.setItem("userMain",JSON.stringify(dataResponse));
-            response.results.splice(0,response.results.length);
-            window.localStorage.setItem("lixeira",JSON.stringify(response));
-            window.localStorage.setItem("visto",JSON.stringify(response));
-            renderList(dataResponse.results);
-            perfilUser(dataResponse.results);
-            setOnFilterPessoas();
-        }
-    };
-    xhttp.open("GET", "https://randomuser.me/api/?page=3&results=10&nat=br");
-    xhttp.send();
-}
 function checadados(){
     if(window.localStorage.length===0){
-        doRequest();
+        return false;
     }
     else{
-        dataResponse = JSON.parse(window.localStorage.getItem("vizualizar"));
+        dataResponse = JSON.parse(window.localStorage.getItem("visto"));
         var user = JSON.parse(window.localStorage.getItem("userMain"));
-        var truco = JSON.parse(window.localStorage.getItem("visto"));
-        console.log(truco);
         renderList(dataResponse.results);
         perfilUser(user.results);
         setOnFilterPessoas();
