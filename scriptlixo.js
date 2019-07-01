@@ -4,6 +4,11 @@ var visto = [];
 var appConstants={
     pessoaLista: 'ListaPessoa'
 }
+function MandaVeja(n){
+    window.localStorage.setItem("veja", JSON.stringify(dataResponse.results[n]));
+    window.localStorage.setItem("pagina","3");
+    window.location.href = "veja.html";
+}
 function MandaTodos(n){
     geral = JSON.parse(window.localStorage.getItem("vizualizar"));
     geral.results.push(dataResponse.results[n]);
@@ -146,14 +151,14 @@ function perfilUser(usuario){
 }
 function RenderCandidatos (listatributos,i) {
     var pessoa = '';
-    var nome = ajeitaNome(listatributos.name.first)
+    var nome = ajeitaNome(listatributos.name.first);
     var cidade = ajeitacidade(listatributos.location.city, listatributos.location.state);
-    pessoa = "<li class=\"FotoCandidato\">" +
-            "<img src=\""+listatributos.picture.medium+"\"alt=\"Foto Pessoa\">" +" </li>"+
-            "<li class=\"NomeCandidato\">"+nome+" </li>"+
-            "<li class=\"EmailCandidato\">"+listatributos.email+" </li>"+
-            "<li class=\"TelCandidato\">"+listatributos.cell+" </li>"+
-            "<li class=\"CidadeCandidato\">"+cidade+"</li>"+
+    pessoa = "<li onclick = \" MandaVeja("+i+")\" class=\"FotoCandidato\">" +
+            "<img onclick = \" MandaVeja("+i+")\" src=\""+listatributos.picture.medium+"\"alt=\"Foto Pessoa\">" +" </li>"+
+            "<li onclick = \" MandaVeja("+i+")\" class=\"NomeCandidato\">"+nome+" </li>"+
+            "<li onclick = \" MandaVeja("+i+")\" class=\"EmailCandidato\">"+listatributos.email+" </li>"+
+            "<li onclick = \" MandaVeja("+i+")\" class=\"TelCandidato\">"+listatributos.cell+" </li>"+
+            "<li onclick = \" MandaVeja("+i+")\" class=\"CidadeCandidato\">"+cidade+"</li>"+
             "<li class=\"BotoesCandidato2\"><i class=\"fas fa-border-none\" onclick = \"MandaTodos("+i+")\"></i> </li>"+
             "<li class=\"BotoesCandidato3\"><i class=\"fas fa-check\" onclick = \"MarcaVisto("+i+")\"></i> </li>";
     return pessoa;

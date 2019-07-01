@@ -1,0 +1,70 @@
+body{
+    background: rgba(249, 249, 249, 0.808);
+    margin: 0px;
+}
+header{
+    background: #323F51;
+    height: 300px;
+}
+#volta{
+    font-size: 40px;
+    margin: 20px;
+    position: absolute;
+    color: white;
+    cursor: pointer;
+}
+ul{
+    list-style: none;
+    color: #AFC233;
+}
+#FotoCandidato{
+    position: absolute;
+    top: 193px;
+    right: 680px;
+}
+#FotoCandidato img{
+    height: 175px;
+    border-radius: 107px;
+}
+#NomeCandidato{
+    position: absolute;
+    left: 655px;
+    top: 400px;
+    font-size: 19px;
+}
+#EmailCandidato{
+    position: absolute;
+    left: 655px;
+    top: 430px;
+    font-size: 19px;
+}
+#TelCandidato{
+    position: absolute;
+    left: 655px;
+    top: 460px;
+    font-size: 19px;
+}
+#CidadeCandidato{
+    position: absolute;
+    left: 655px;
+    top: 490px;
+    font-size: 19px;
+}
+#idade{
+    position: absolute;
+    left: 655px;
+    top: 520px;
+    font-size: 19px;
+}
+#username{
+    position: absolute;
+    left: 655px;
+    top: 550px;
+    font-size: 19px;
+}
+#senha{
+    position: absolute;
+    left: 655px;
+    top: 580px;
+    font-size: 19px;
+}
